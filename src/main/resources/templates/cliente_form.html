@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Cliente</title>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<h1 th:text="${cliente.id == null ? 'Novo Cliente' : 'Editar Cliente'}"></h1>
+ 
+    <form th:action="@{/cliente/salvar}" th:object="${cliente}" method="post">
+<input type="hidden" th:field="*{id}"/>
+ 
+        <label>Nome:</label>
+<input type="text" th:field="*{nome}" required/><br/>
+ 
+        <label>CPF:</label>
+<input type="text" th:field="*{cpf}" required/><br/>
+ 
+        <button type="submit">💾 Salvar</button>
+</form>
+ 
+    <a href="/cliente"><button>⬅️ Voltar</button></a>
+</body>
+</html>
+
+ 

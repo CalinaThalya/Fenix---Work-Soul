@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Movimentações Financeiras</title>
+<link rel="stylesheet" href="/css/style.css"/>
+
+</head>
+<body>
+<h1>Movimentações de Humor </h1>
+ 
+    <a href="/movimentacao/nova">Nova Humor</a>
+<br/><br/>
+ 
+    <table border="1">
+<thead>
+<tr>
+<th>ID</th>
+<th>Descrição</th>
+<th>Hora</th>
+<th>Data</th>
+<th>Cliente</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="m : ${movimentacoes}">
+<td th:text="${m.id}"></td>
+<td th:text="${m.descricao}"></td>
+<td th:text="${m.hora}"></td>
+<td th:text="${m.data}"></td>
+<td th:text="${m.cliente != null ? m.cliente.nome : 'Sem cliente'}"></td>
+<td>
+<a th:href="@{/movimentacao/editar/{id}(id=${m.id})}">Editar</a>
+<a th:href="@{/movimentacao/deletar/{id}(id=${m.id})}">Excluir</a>
+</td>
+</tr>
+</tbody>
+</table>
+ 
+    <br/>
+<a href="/cliente">Voltar para Funcionários</a>
+</body>
+</html>

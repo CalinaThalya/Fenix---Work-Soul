@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registro de Humor</title>
+<link rel="stylesheet" href="/css/style.css"/>
+
+</head>
+<body>
+<h1 th:text="${movimentacao.id != null} ? 'Editar Movimentação' : 'Nova Movimentação'"></h1>
+ 
+    <form action="/movimentacao/salvar" method="post" th:object="${movimentacao}">
+<input type="hidden" th:field="*{id}" />
+ 
+        <label>Descrição:</label>
+<input type="text" th:field="*{descricao}" required />
+<br/><br/>
+ 
+        <label>hora:</label>
+<input type="time" th:field="*{hora}" required />
+<br/><br/>
+ 
+        <label>Data:</label>
+<input type="date" th:field="*{data}" required />
+<br/><br/>
+ 
+     <label>Funcionários:</label>
+<select th:field="*{cliente.id}" required>
+<option th:each="c : ${clientes}" th:value="${c.id}" th:text="${c.nome}"></option>
+</select>
+ 
+        <button type="submit">Salvar</button>
+</form>
+ 
+    <br/>
+<a href="/movimentacao">Voltar</a>
+</body>
+</html>
+
+ 

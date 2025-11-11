@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Fucionarios do projeto Fenix - Work Soul</title>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+        <a href="/movimentacao/nova">Novo Humor</a>
+
+<h1>Fucionarios cadastrados no projeto Fenix - Work Soul</h1>
+
+<h2>Um pouco sobre o projeto:</h2>
+
+<h3>
+  O Sistema Fenix - Work Soul que faz Registro de Humor de Funcionários foi desenvolvido para que cada colaborador possa registrar diariamente como está se sentindo. <br><br>
+  Esses registros são salvos em um banco de dados e, posteriormente, analisados por uma Inteligência Artificial que realiza uma análise de sentimentos sobre os dados coletados. <br><br>
+  Com base nessas análises, o time de RH e os psicólogos da empresa poderão identificar padrões emocionais, momentos de maior estresse e oportunidades de melhoria. <br><br>
+  Assim, será possível estabelecer pausas estratégicas durante o expediente, propor dinâmicas e ações voltadas ao bem-estar e fortalecer a saúde mental de todos os colaboradores. 💖
+</h3>
+
+ 
+    <a href="/cliente/novo">
+<button>➕ Adicionar Fucionarios</button>
+</a>
+ 
+    <table border="1">
+<tr>
+<th>ID</th>
+<th>Nome</th>
+<th>CPF</th>
+<th>Ações</th>
+</tr>
+<tr th:each="cliente : ${cliente}">
+<td th:text="${cliente.id}"></td>
+<td th:text="${cliente.nome}"></td>
+<td th:text="${cliente.cpf}"></td>
+<td>
+<a th:href="@{|/cliente/editar/${cliente.id}|}">
+<button>✏️ Editar</button>
+</a>
+<a th:href="@{|/cliente/deletar/${cliente.id}|}" 
+
+                   onclick="return confirm('Tem certeza que deseja excluir?')">
+<button>🗑️ Excluir</button>
+</a>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+ 
